@@ -49,17 +49,9 @@ class MainViewController: UIViewController {
             .offset(0)
             .offsetPattern(" ")
             .prefix("🚀")
-            .uppercased(false)
-            .dateFormat(.date)
-            .print("Date", text)
-            .dateFormat(.time)
-            .print("Time", text)
             .dateFormat(.dateTime)
-            .print("Date time", text)
-            .dateFormat(.custom(format: "MMMM dd"))
-            .print("Custom", text)
-            .dateFormat(.none)
-            .print("None", text)
+            .uppercased(false)
+            .print(text)
     }
     
     // MARK: Actions
