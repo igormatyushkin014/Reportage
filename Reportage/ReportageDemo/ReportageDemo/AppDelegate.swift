@@ -50,7 +50,7 @@ extension AppDelegate: UIApplicationDelegate {
         
         // Display default screen
         
-        let viewController = UIViewController()
+        let viewController = MainViewController(nibName: "MainViewController", bundle: nil)
         let navigationController = UINavigationController(rootViewController: viewController)
         self.window!.rootViewController = navigationController
         
