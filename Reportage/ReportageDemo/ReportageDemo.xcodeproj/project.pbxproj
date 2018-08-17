@@ -12,6 +12,7 @@
 		6977F9102126D7900029B3D2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977F90E2126D7900029B3D2 /* MainViewController.swift */; };
 		6977F9112126D7900029B3D2 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6977F90F2126D7900029B3D2 /* MainViewController.xib */; };
 		6977F9132126D8160029B3D2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6977F9122126D8160029B3D2 /* LaunchScreen.xib */; };
+		6977F92E2126DBBE0029B3D2 /* Reportage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6977F92D2126DBBE0029B3D2 /* Reportage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		6977F90E2126D7900029B3D2 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		6977F90F2126D7900029B3D2 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		6977F9122126D8160029B3D2 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		6977F92D2126DBBE0029B3D2 /* Reportage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Reportage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6977F92E2126DBBE0029B3D2 /* Reportage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,6 +42,7 @@
 			isa = PBXGroup;
 			children = (
 				6977F8F92126D7500029B3D2 /* ReportageDemo */,
+				6977F92C2126DBAE0029B3D2 /* Frameworks */,
 				6977F8F82126D7500029B3D2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -78,6 +82,14 @@
 				6977F90F2126D7900029B3D2 /* MainViewController.xib */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		6977F92C2126DBAE0029B3D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6977F92D2126DBBE0029B3D2 /* Reportage.framework */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
