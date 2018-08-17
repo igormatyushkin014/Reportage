@@ -11,6 +11,8 @@ import Foundation
 public struct Message {
     var dateFormat: DateFormat
     var prefix: String
-    var text: String = ""
-    var uppercased: Bool = false
+    var text: String
+    var uppercased: Bool
+    var header: MessageHeaderFooter
+    var footer: MessageHeaderFooter
 }
