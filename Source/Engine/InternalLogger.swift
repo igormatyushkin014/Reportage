@@ -35,7 +35,10 @@ internal class InternalLogger {
             return
         }
         
-        var textToPrint = message.prefix
+        let formattedDate = self.currentDate(formattedWith: message.dateFormat)
+        var textToPrint = formattedDate
+            + (formattedDate.count > 0 ? " " : "")
+            + message.prefix
             + (message.prefix.count > 0 ? " " : "")
             + message.text
         
@@ -75,10 +78,27 @@ internal class InternalLogger {
         return self.string(withPattern: offsetPattern, repeated: offset) + text
     }
     
-    fileprivate func message(withText text: String, andPrefix prefix: String) -> String {
-        return prefix
-            + (prefix.count > 0 ? " " : "")
-            + text
+    fileprivate func currentDate(formattedWith dateFormat: DateFormat) -> String {
+        switch dateFormat {
+        case .date:
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM dd, YYYY"
+            return dateFormatter.string(from: Date())
+        case .time:
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm:ss"
+            return dateFormatter.string(from: Date())
+        case .dateTime:
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM dd, YYYY HH:mm:ss"
+            return dateFormatter.string(from: Date())
+        case .custom(let format):
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = format
+            return dateFormatter.string(from: Date())
+        case .none:
+            return ""
+        }
     }
     
 }
