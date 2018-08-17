@@ -89,31 +89,12 @@ public class Logger {
     @discardableResult
     public func print(_ messages: String...) -> Self {
         let text = messages.joined(separator: " ")
-        self.print(text)
+        let internalMessage = Message(prefix: self.prefix, text: text, uppercased: self.uppercased)
+        InternalLogger().print(internalMessage, withOffset: self.offset, builtOnPattern: self.offsetPattern, andLineWidth: self.width)
         return self
     }
     
     // MARK: Private object methods
-    
-    fileprivate func string(withPattern pattern: String, repeated times: Int) -> String {
-        var result = ""
-        
-        for _ in 0..<times {
-            result += pattern
-        }
-        
-        return result
-    }
-    
-    fileprivate func line(_ text: String, withOffset offset: Int, builtOnPattern offsetPattern: String) -> String {
-        return self.string(withPattern: offsetPattern, repeated: offset) + text
-    }
-    
-    fileprivate func message(withText text: String, andPrefix prefix: String) -> String {
-        return prefix
-            + (prefix.count > 0 ? " " : "")
-            + text
-    }
     
 }
 
