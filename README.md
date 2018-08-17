@@ -1,3 +1,44 @@
-## Reportage
+<p align="center" >
+	<img src="/Images/logo_2048_2048.png" alt="Reportage" title="Reportage" width="300px" height="300px">
+</p>
 
-The library is in development process. Documentation will be uploaded soon.
+<p align="center">
+	<a href="https://swift.org">
+		<img src="https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat">
+	</a>
+	<a href="https://cocoapods.org">
+		<img src="https://img.shields.io/cocoapods/v/Reportage.svg">
+	</a>
+	<a href="https://cocoapods.org">
+		<img src="https://img.shields.io/cocoapods/dt/Reportage.svg">
+	</a>
+	<a href="https://tldrlegal.com/license/mit-license">
+		<img src="https://img.shields.io/badge/License-Apache 2.0-blue.svg?style=flat">
+	</a>
+</p>
+
+## At a Glance
+
+`Reportage` is a powerful tool that simplifies console output in Xcode.
+
+## How To Get Started
+
+- Copy content of `Source` folder to your project.
+
+or
+
+- Use `Reportage` cocoapod
+
+## Requirements
+
+* iOS 9 and later
+* Xcode 9 and later
+* Swift 4
+
+## Usage
+
+Documentation will be uploaded soon.
+
+## License
+
+`Reportage` is available under the Apache 2.0 license. See the [LICENSE](./LICENSE) file for more info.
