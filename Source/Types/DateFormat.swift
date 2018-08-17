@@ -9,8 +9,9 @@
 import Foundation
 
 public enum DateFormat {
-    case full
-    case short
+    case date
+    case time
+    case dateTime
     case custom(format: String)
     case none
 }
