@@ -29,6 +29,8 @@ public class Logger {
         self.dateFormat = Settings.defaultDateFormat
         self.prefix = Settings.defaultPrefix
         self.uppercased = Settings.uppercasedByDefault
+        self.header = Settings.defaultHeader
+        self.footer = Settings.defaultFooter
     }
     
     // MARK: Deinitializer
@@ -86,11 +88,27 @@ public class Logger {
         return self
     }
     
+    fileprivate var header: MessageHeaderFooter
+    
+    @discardableResult
+    public func header(_ value: MessageHeaderFooter) -> Self {
+        self.header = value
+        return self
+    }
+    
+    fileprivate var footer: MessageHeaderFooter
+    
+    @discardableResult
+    public func footer(_ value: MessageHeaderFooter) -> Self {
+        self.footer = value
+        return self
+    }
+    
     // MARK: Public object methods
     
     @discardableResult
     public func print(_ message: String) -> Self {
-        let internalMessage = Message(dateFormat: self.dateFormat, prefix: self.prefix, text: message, uppercased: self.uppercased)
+        let internalMessage = Message(dateFormat: self.dateFormat, prefix: self.prefix, text: message, uppercased: self.uppercased, header: self.header, footer: self.footer)
         InternalLogger().print(internalMessage, withOffset: self.offset, builtOnPattern: self.offsetPattern, andLineWidth: self.width)
         return self
     }
@@ -98,7 +116,7 @@ public class Logger {
     @discardableResult
     public func print(_ messages: String...) -> Self {
         let text = messages.joined(separator: " ")
-        let internalMessage = Message(dateFormat: self.dateFormat, prefix: self.prefix, text: text, uppercased: self.uppercased)
+        let internalMessage = Message(dateFormat: self.dateFormat, prefix: self.prefix, text: text, uppercased: self.uppercased, header: self.header, footer: self.footer)
         InternalLogger().print(internalMessage, withOffset: self.offset, builtOnPattern: self.offsetPattern, andLineWidth: self.width)
         return self
     }
@@ -144,6 +162,18 @@ public extension Logger {
         public static var uppercasedByDefault: Bool {
             get {
                 return false
+            }
+        }
+        
+        public static var defaultHeader: MessageHeaderFooter {
+            get {
+                return .none
+            }
+        }
+        
+        public static var defaultFooter: MessageHeaderFooter {
+            get {
+                return .emptyLine
             }
         }
         
