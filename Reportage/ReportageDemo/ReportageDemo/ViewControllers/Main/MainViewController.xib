@@ -19,9 +19,26 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOU-oh-ugF">
+                    <rect key="frame" x="136" y="269" width="48" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="1fJ-Cf-m2U"/>
+                        <constraint firstAttribute="width" constant="48" id="DAk-ft-l55"/>
+                    </constraints>
+                    <state key="normal" title="Output"/>
+                    <connections>
+                        <action selector="outputButtonDidTap:" destination="-1" eventType="touchUpInside" id="qxD-ZW-1lj"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="xOU-oh-ugF" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="8gy-u3-UAz"/>
+                <constraint firstItem="xOU-oh-ugF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TJe-c2-vl3"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="-278" y="-16"/>
+            <point key="canvasLocation" x="-150" y="-15"/>
         </view>
     </objects>
 </document>

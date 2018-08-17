@@ -8,14 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		6977F9232126DB180029B3D2 /* Reportage.h in Headers */ = {isa = PBXBuildFile; fileRef = 6977F9212126DB170029B3D2 /* Reportage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6977F92B2126DB6A0029B3D2 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977F92A2126DB6A0029B3D2 /* Logger.swift */; };
+		69B4754721272A8C00AC11C1 /* InternalLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4754121272A8C00AC11C1 /* InternalLogger.swift */; };
+		69B4754821272A8C00AC11C1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4754221272A8C00AC11C1 /* Logger.swift */; };
+		69B4754921272A8C00AC11C1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4754421272A8C00AC11C1 /* Message.swift */; };
+		69B4754A21272A8C00AC11C1 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B4754621272A8C00AC11C1 /* DateFormat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6977F91E2126DB170029B3D2 /* Reportage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reportage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6977F9212126DB170029B3D2 /* Reportage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reportage.h; sourceTree = "<group>"; };
 		6977F9222126DB170029B3D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6977F92A2126DB6A0029B3D2 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		69B4754121272A8C00AC11C1 /* InternalLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalLogger.swift; sourceTree = "<group>"; };
+		69B4754221272A8C00AC11C1 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		69B4754421272A8C00AC11C1 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		69B4754621272A8C00AC11C1 /* DateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +64,37 @@
 		6977F9292126DB250029B3D2 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				6977F92A2126DB6A0029B3D2 /* Logger.swift */,
+				69B4754521272A8C00AC11C1 /* Types */,
+				69B4754321272A8C00AC11C1 /* Data */,
+				69B4754021272A8C00AC11C1 /* Engine */,
 			);
 			name = Source;
 			path = ../../../Source;
+			sourceTree = "<group>";
+		};
+		69B4754021272A8C00AC11C1 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				69B4754121272A8C00AC11C1 /* InternalLogger.swift */,
+				69B4754221272A8C00AC11C1 /* Logger.swift */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
+		69B4754321272A8C00AC11C1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				69B4754421272A8C00AC11C1 /* Message.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		69B4754521272A8C00AC11C1 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				69B4754621272A8C00AC11C1 /* DateFormat.swift */,
+			);
+			path = Types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +176,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6977F92B2126DB6A0029B3D2 /* Logger.swift in Sources */,
+				69B4754921272A8C00AC11C1 /* Message.swift in Sources */,
+				69B4754721272A8C00AC11C1 /* InternalLogger.swift in Sources */,
+				69B4754A21272A8C00AC11C1 /* DateFormat.swift in Sources */,
+				69B4754821272A8C00AC11C1 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
