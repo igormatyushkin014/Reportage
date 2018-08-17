@@ -26,6 +26,8 @@ public class Logger {
         self.width = Settings.defaultWidth
         self.offset = Settings.defaultOffset
         self.offsetPattern = Settings.defaultOffsetPattern
+        self.prefix = Settings.defaultPrefix
+        self.uppercased = Settings.uppercasedByDefault
     }
     
     // MARK: Deinitializer
@@ -59,27 +61,35 @@ public class Logger {
         return self
     }
     
+    fileprivate var prefix: String
+    
+    @discardableResult
+    public func prefix(_ value: String) -> Self {
+        self.prefix = value
+        return self
+    }
+    
+    fileprivate var uppercased: Bool
+    
+    @discardableResult
+    public func uppercased(_ value: Bool) -> Self {
+        self.uppercased = value
+        return self
+    }
+    
     // MARK: Public object methods
     
     @discardableResult
-    public func print(_ text: String) -> Self {
-        guard self.offset < self.width else {
-            return self
-        }
-        
-        var buffer = String(text)
-        
-        while !buffer.isEmpty {
-            let substringLength = min(self.width - self.offset, buffer.count)
-            let substring = String(buffer.prefix(substringLength))
-            let substringWithOffset = self.line(substring, withOffset: self.offset, builtOnPattern: self.offsetPattern)
-            
-            let newBufferLength = buffer.count - substringLength
-            buffer = String(buffer.suffix(newBufferLength))
-            
-            Swift.print(substringWithOffset)
-        }
-        
+    public func print(_ message: String) -> Self {
+        let internalMessage = Message(prefix: self.prefix, text: message, uppercased: self.uppercased)
+        InternalLogger().print(internalMessage, withOffset: self.offset, builtOnPattern: self.offsetPattern, andLineWidth: self.width)
+        return self
+    }
+    
+    @discardableResult
+    public func print(_ messages: String...) -> Self {
+        let text = messages.joined(separator: " ")
+        self.print(text)
         return self
     }
     
@@ -99,6 +109,12 @@ public class Logger {
         return self.string(withPattern: offsetPattern, repeated: offset) + text
     }
     
+    fileprivate func message(withText text: String, andPrefix prefix: String) -> String {
+        return prefix
+            + (prefix.count > 0 ? " " : "")
+            + text
+    }
+    
 }
 
 public extension Logger {
@@ -107,7 +123,7 @@ public extension Logger {
         
         public static var defaultWidth: Int {
             get {
-                return 20
+                return 40
             }
         }
         
@@ -120,6 +136,18 @@ public extension Logger {
         public static var defaultOffsetPattern: String {
             get {
                 return " "
+            }
+        }
+        
+        public static var defaultPrefix: String {
+            get {
+                return ""
+            }
+        }
+        
+        public static var uppercasedByDefault: Bool {
+            get {
+                return false
             }
         }
         
