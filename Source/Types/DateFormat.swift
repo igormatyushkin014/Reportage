@@ -11,5 +11,6 @@ import Foundation
 public enum DateFormat {
     case full
     case short
+    case custom(format: String)
     case none
 }
