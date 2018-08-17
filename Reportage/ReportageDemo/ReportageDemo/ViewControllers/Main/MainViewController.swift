@@ -50,7 +50,16 @@ class MainViewController: UIViewController {
             .offsetPattern(" ")
             .prefix("🚀")
             .uppercased(false)
-            .print(text)
+            .dateFormat(.date)
+            .print("Date", text)
+            .dateFormat(.time)
+            .print("Time", text)
+            .dateFormat(.dateTime)
+            .print("Date time", text)
+            .dateFormat(.custom(format: "MMMM dd"))
+            .print("Custom", text)
+            .dateFormat(.none)
+            .print("None", text)
     }
     
     // MARK: Actions
