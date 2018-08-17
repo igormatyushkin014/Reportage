@@ -149,7 +149,7 @@ public extension Logger {
         
         public static var defaultDateFormat: DateFormat {
             get {
-                return .none
+                return .dateTime
             }
         }
         
