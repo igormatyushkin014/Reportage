@@ -31,9 +31,25 @@ internal class InternalLogger {
     // MARK: Public object methods
     
     public func print(_ message: Message, withOffset offset: Int, builtOnPattern offsetPattern: String, andLineWidth lineWidth: Int) {
+        // Check offset
+        
         guard offset < lineWidth else {
             return
         }
+        
+        // Print header if needed
+        
+        if self.shouldPrint(message.header) {
+            var headerText = self.line(with: message.header, offset: offset, builtOnPattern: offsetPattern, andLineWidth: lineWidth)
+            
+            if message.uppercased {
+                headerText = headerText.uppercased()
+            }
+            
+            Swift.print(headerText)
+        }
+        
+        // Print text
         
         let formattedDate = self.currentDate(formattedWith: message.dateFormat)
         var textToPrint = formattedDate
@@ -59,7 +75,17 @@ internal class InternalLogger {
             Swift.print(substringWithOffset)
         }
         
-        Swift.print()
+        // Print footer if needed
+        
+        if self.shouldPrint(message.footer) {
+            var footerText = self.line(with: message.footer, offset: offset, builtOnPattern: offsetPattern, andLineWidth: lineWidth)
+            
+            if message.uppercased {
+                footerText = footerText.uppercased()
+            }
+            
+            Swift.print(footerText)
+        }
     }
     
     // MARK: Private object methods
@@ -96,6 +122,29 @@ internal class InternalLogger {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = format
             return dateFormatter.string(from: Date())
+        case .none:
+            return ""
+        }
+    }
+    
+    fileprivate func shouldPrint(_ messageHeaderFooter: MessageHeaderFooter) -> Bool {
+        if case .none = messageHeaderFooter {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    fileprivate func line(with messageHeaderFooter: MessageHeaderFooter, offset: Int, builtOnPattern offsetPattern: String, andLineWidth lineWidth: Int) -> String {
+        switch messageHeaderFooter {
+        case .emptyLine:
+            let headerFooterText = self.string(withPattern: " ", repeated: lineWidth - offset)
+            return self.line(headerFooterText, withOffset: offset, builtOnPattern: offsetPattern)
+        case .line(let pattern):
+            let headerFooterText = self.string(withPattern: pattern, repeated: lineWidth - offset)
+            return self.line(headerFooterText, withOffset: offset, builtOnPattern: offsetPattern)
+        case .custom(let text):
+            return self.line(text, withOffset: offset, builtOnPattern: offsetPattern)
         case .none:
             return ""
         }
