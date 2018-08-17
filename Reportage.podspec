@@ -96,7 +96,7 @@ Powerful tool for managing log output in iOS.
 
   # s.public_header_files = "Classes/**/*.h"
 
-  s.swift_version = "4.1"
+  s.swift_version = "4.0"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
