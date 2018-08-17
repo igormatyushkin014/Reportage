@@ -9,6 +9,7 @@
 import Foundation
 
 public struct Message {
+    var dateFormat: DateFormat
     var prefix: String
     var text: String = ""
     var uppercased: Bool = false
