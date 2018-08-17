@@ -26,6 +26,7 @@ public class Logger {
         self.width = Settings.defaultWidth
         self.offset = Settings.defaultOffset
         self.offsetPattern = Settings.defaultOffsetPattern
+        self.dateFormat = Settings.defaultDateFormat
         self.prefix = Settings.defaultPrefix
         self.uppercased = Settings.uppercasedByDefault
     }
@@ -61,6 +62,14 @@ public class Logger {
         return self
     }
     
+    fileprivate var dateFormat: DateFormat
+    
+    @discardableResult
+    public func dateFormat(_ value: DateFormat) -> Self {
+        self.dateFormat = value
+        return self
+    }
+    
     fileprivate var prefix: String
     
     @discardableResult
@@ -81,7 +90,7 @@ public class Logger {
     
     @discardableResult
     public func print(_ message: String) -> Self {
-        let internalMessage = Message(prefix: self.prefix, text: message, uppercased: self.uppercased)
+        let internalMessage = Message(dateFormat: self.dateFormat, prefix: self.prefix, text: message, uppercased: self.uppercased)
         InternalLogger().print(internalMessage, withOffset: self.offset, builtOnPattern: self.offsetPattern, andLineWidth: self.width)
         return self
     }
@@ -89,7 +98,7 @@ public class Logger {
     @discardableResult
     public func print(_ messages: String...) -> Self {
         let text = messages.joined(separator: " ")
-        let internalMessage = Message(prefix: self.prefix, text: text, uppercased: self.uppercased)
+        let internalMessage = Message(dateFormat: self.dateFormat, prefix: self.prefix, text: text, uppercased: self.uppercased)
         InternalLogger().print(internalMessage, withOffset: self.offset, builtOnPattern: self.offsetPattern, andLineWidth: self.width)
         return self
     }
@@ -117,6 +126,12 @@ public extension Logger {
         public static var defaultOffsetPattern: String {
             get {
                 return " "
+            }
+        }
+        
+        public static var defaultDateFormat: DateFormat {
+            get {
+                return .none
             }
         }
         
